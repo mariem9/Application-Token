@@ -3,7 +3,7 @@ import { MariemContext } from '../context/MariemContext'
 
 import Cards from './Cards'
 import Featured from './Featured'
-import Header from './Header'
+import Header3 from './Header3'
 
 const Main = () => {
   const styles = {
@@ -16,7 +16,7 @@ const Main = () => {
 
   return (
     <div className={styles.container}>
-      <Header />
+      <Header3 />
       <Featured />
       <Cards />
       {recentTransactions.length > 0 && (

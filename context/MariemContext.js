@@ -34,19 +34,19 @@ export const MariemProvider = ({ children }) => {
 
 
 
-    useEffect( () => {
+    useEffect(async () => {
         if (isAuthenticated) {
           const account = user.get('ethAddress')
           let formatAccount = account.slice(0, 4) + '...' + account.slice(-4)
            setFormattedAccount(formatAccount)
           setCurrentAccount(account)
-            // const currentBalance = await Moralis.Web3API.account.getNativeBalance({
-            //    chain: 'rinkeby',
-            //     address: currentAccount,
-            //   })
-            //   const balanceToEth = Moralis.Units.FromWei(currentBalance.balance)
-            //   const formattedBalance = parseFloat(balanceToEth).toFixed(3)
-            //  setBalance(formattedBalance)
+            const currentBalance = await Moralis.Web3API.account.getNativeBalance({
+                chain: 'rinkeby',
+                 address: currentAccount,
+               })
+               const balanceToEth = Moralis.Units.FromWei(currentBalance.balance)
+               const formattedBalance = parseFloat(balanceToEth).toFixed(3)
+              setBalance(formattedBalance)
         }
       }, [isAuthenticated, enableWeb3])
   

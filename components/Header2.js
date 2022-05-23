@@ -45,14 +45,14 @@ export default function Header2() {
           <>
             <div >{formattedAccount}</div>
             <div  className={styles.secondaryButton} onClick={() => signOut()}>
-              Logout
+            Disconnect Wallet
             </div>
           </>
         )}
 
         {!isAuthenticated && (
           <div   className={styles.mainButton} onClick={() => connectWallet()}>
-            Login
+           Connect Wallet
           </div>
          )} 
       </div>

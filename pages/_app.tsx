@@ -2,7 +2,7 @@
 import { MariemProvider } from "../context/MariemContext";
 import { MoralisProvider } from 'react-moralis'
 import "../styles/globals.css";
-
+import { ModalProvider } from 'react-simple-hook-modal'
 function MyApp({ Component, pageProps }) {
   return (
     
@@ -13,8 +13,9 @@ function MyApp({ Component, pageProps }) {
       appId='HUEpcBuWsZlMXyOrQ2kSZTqCFGp5UqNE3fjbLlOX'
     >
       <MariemProvider>
-        
+      <ModalProvider>
       <Component {...pageProps} />
+      </ModalProvider>
       </MariemProvider>
       </MoralisProvider>
      </ThirdwebProvider>
