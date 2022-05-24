@@ -28,7 +28,7 @@ const BuyModal = ({ close, buyTokens }) => {
     setIsLoading,
     etherscanLink,
     setEtherscanLink,
-  } = useContext(AmazonContext)
+  } = useContext(MariemContext)
   useEffect(() => {
     calculatePrice()
   }, [tokenAmount])

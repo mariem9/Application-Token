@@ -34,21 +34,21 @@ export const MariemProvider = ({ children }) => {
 
 
 
-    useEffect(async () => {
-        if (isAuthenticated) {
-          const account = user.get('ethAddress')
-          let formatAccount = account.slice(0, 4) + '...' + account.slice(-4)
-           setFormattedAccount(formatAccount)
-          setCurrentAccount(account)
-            const currentBalance = await Moralis.Web3API.account.getNativeBalance({
-                chain: 'rinkeby',
-                 address: currentAccount,
-               })
-               const balanceToEth = Moralis.Units.FromWei(currentBalance.balance)
-               const formattedBalance = parseFloat(balanceToEth).toFixed(3)
-              setBalance(formattedBalance)
-        }
-      }, [isAuthenticated, enableWeb3])
+    // useEffect(async () => {
+    //     if (isAuthenticated) {
+    //       const account = user.get('ethAddress')
+    //       let formatAccount = account.slice(0, 4) + '...' + account.slice(-4)
+    //        setFormattedAccount(formatAccount)
+    //       setCurrentAccount(account)
+    //         const currentBalance = await Moralis.Web3API.account.getNativeBalance({
+    //              chain: 'rinkeby',
+    //               address: currentAccount,
+    //             })
+    //             const balanceToEth = Moralis.Units.FromWei(currentBalance.balance)
+    //             const formattedBalance = parseFloat(balanceToEth).toFixed(3)
+    //            setBalance(formattedBalance)
+    //     }
+    //   }, [isAuthenticated, enableWeb3])
   
     // useEffect(() => {
     //   if (!currentAccount) return
@@ -184,9 +184,9 @@ export const MariemProvider = ({ children }) => {
     //   })
     // }
   
-    const connectWallet = () => {
-      authenticate()
-    }
+    // const connectWallet = () => {
+    //   authenticate()
+    // }
   
     const signOut = () => {
       console.log('Logged out')
@@ -235,48 +235,48 @@ export const MariemProvider = ({ children }) => {
       isLoading: assetsDataIsLoading,
     } = useMoralisQuery('assets')
   
-    // useEffect(async () => {
-    //   console.log(assetsData)
-    //   await enableWeb3()
-    //   await getAssets()
-    //   await getOwnedAssets()
-    // }, [userData, assetsData, assetsDataIsLoading, userDataIsLoading])
-  
     //  useEffect(async () => {
-    //    if (!isWeb3Enabled) {
+    //      console.log(assetsData)
     //      await enableWeb3()
-    //    }
-    //    await listenToUpdates()
+    //      await getAssets()
+    //      await getOwnedAssets()
+    //    }, [userData, assetsData, assetsDataIsLoading, userDataIsLoading])
   
-    //   if (isAuthenticated) {
-    //      await getBalance()
-    //      const currentUsername = await user?.get('nickname')
-    //      setUsername(currentUsername)
-    //      const account = await user?.get('ethAddress')
-    //      setCurrentAccount(account)
-    //      const formatAccount = account.slice(0, 5) + '...' + account.slice(-5)
-    //      setFormattedAccount(formatAccount)
-    //    } else {
-    //      setCurrentAccount('')
-    //      setFormattedAccount('')
-    //      setBalance('')
-    //    }
-    //  }, [
-    //    isWeb3Enabled,
-    //    isAuthenticated,
-    //    balance,
-    //    setBalance,
-    //    authenticate,
-    //    currentAccount,
-    //    setUsername,
-    //    user,
-    //    username,
-    //  ])
+      // useEffect(async () => {
+      //   if (!isWeb3Enabled) {
+      //     await enableWeb3()
+      //   }
+      //   await listenToUpdates()
   
-    // const connectWallet = async () => {
-    //   await enableWeb3()
-    //   await authenticate()
-    // }
+      //  if (isAuthenticated) {
+      //     await getBalance()
+      //     const currentUsername = await user?.get('nickname')
+      //     setUsername(currentUsername)
+      //     const account = await user?.get('ethAddress')
+      //     setCurrentAccount(account)
+      //     const formatAccount = account.slice(0, 5) + '...' + account.slice(-5)
+      //     setFormattedAccount(formatAccount)
+      //   } else {
+      //     setCurrentAccount('')
+      //     setFormattedAccount('')
+      //     setBalance('')
+      //   }
+      // }, [
+      //   isWeb3Enabled,
+      //   isAuthenticated,
+      //   balance,
+      //   setBalance,
+      //   authenticate,
+      //   currentAccount,
+      //   setUsername,
+      //   user,
+      //   username,
+      // ])
+  
+    const connectWallet = async () => {
+       await enableWeb3()
+       await authenticate()
+     }
   
     const buyTokens = async () => {
       if (!isAuthenticated) {
@@ -307,19 +307,19 @@ export const MariemProvider = ({ children }) => {
       )
     }
   
-    const handleSetUsername = () => {
-      if (user) {
-        if (nickname) {
-          user.set('nickname', nickname)
-          user.save()
-          setNickname('')
-        } else {
-          console.log("Can't set empty nickname")
-        }
-      } else {
-        console.log('No user')
-      }
-    }
+    // const handleSetUsername = () => {
+    //   if (user) {
+    //     if (nickname) {
+    //       user.set('nickname', nickname)
+    //       user.save()
+    //       setNickname('')
+    //     } else {
+    //       console.log("Can't set empty nickname")
+    //     }
+    //   } else {
+    //     console.log('No user')
+    //   }
+    // }
   
     const getBalance = async () => {
       try {
@@ -474,7 +474,7 @@ export const MariemProvider = ({ children }) => {
         setNickname,
         username,
         setUsername,
-        handleSetUsername,
+        // handleSetUsername,
         assets,
         recentTransactions,
         ownedItems,
